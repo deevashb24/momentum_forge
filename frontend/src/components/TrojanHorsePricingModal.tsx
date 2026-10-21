@@ -53,12 +53,14 @@ const TIER_CARDS: TierCardConfig[] = [
     accentColor: "text-[#06b6d4]",
     borderAccent: "border-[#06b6d4]/50",
     description:
-      "Complete Blender 5.2 MCP harnesses, KDTree 32m corridor auditor, JSON scene contracts, and Godot 4.7 streaming runtime.",
+      "Complete Blender 5.2 MCP harnesses, KDTree 32m corridor auditor, JSON scene contracts, and Godot 4.7 streaming runtime with 3-sector reference sandbox.",
     features: [
+      "Modular 3-Sector Reference Sandbox (S00-S02, 2.5 km)",
       "99_validate_scene.py KDTree Spatial Auditor",
       "R9_LIGHTING_CONTRACT.json & Rain Contracts",
       "Level01_CerberusCity.gd 6-Light Pool Runtime",
       "106-Assertion Headless GDScript Test Suite",
+      "Seedance 2.5 AI Cinematic Prompt Vault",
       "6-Module Self-Paced Practitioner Video Course",
     ],
   },
@@ -71,12 +73,13 @@ const TIER_CARDS: TierCardConfig[] = [
     accentColor: "text-[#8b5cf6]",
     borderAccent: "border-[#8b5cf6]/50",
     description:
-      "Build & ship your own 50+ sector playablevertical slice alongside the creators of MOMENTUM with live code reviews.",
+      "Build & ship your own 50+ sector playable vertical slice alongside the creators of MOMENTUM with live code reviews.",
     features: [
       "Everything in the $149 Starter Boilerplate Kit",
+      "Build Your Own 50+ Sector Universe with Live Reviews",
+      "Seedance 2.5 Cinematic Trailer & Cutscene Masterclass",
       "6 Live Architecture & Shader Labs (Zoom + Discord)",
       "1-on-1 Blender MCP & Godot 4.7 Jolt Profiler Audit",
-      "Custom SKILL.md Multi-Camera Visual QA Tuning",
       "Verified Autonomous Game Architect Certificate",
     ],
   },
