@@ -174,6 +174,22 @@ export interface TierRevenueBreakdown {
   revenue_usd: number;
 }
 
+export interface GameStoryPhase {
+  id: string;
+  phase_number: number;
+  code: string;
+  title: string;
+  cinematic_id: string;
+  setting: string;
+  lore_synopsis: string;
+  level_mechanics: string[];
+  operative_variant: string;
+  soundtrack_tempo: string;
+  cinematic_camera_prompt: string;
+}
+
+export type GameStoryPhaseResponse = GameStoryPhase;
+
 /**
  * Telemetry & Revenue Funnel Metrics across the 4-Tier Platform.
  */

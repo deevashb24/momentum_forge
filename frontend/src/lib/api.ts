@@ -3,6 +3,7 @@ import type {
   BoilerplateFilterParams,
   CurriculumModuleResponse,
   EnrollmentAndLicense,
+  GameStoryPhase,
   LicenseCheckoutRequest,
   LicenseCheckoutResponse,
   PipelineRunCreateRequest,
@@ -507,6 +508,121 @@ export async function fetchCurriculumModules(): Promise<CurriculumModuleResponse
     return Array.isArray(data) && data.length > 0 ? data : FALLBACK_CURRICULUM;
   } catch {
     return FALLBACK_CURRICULUM;
+  }
+}
+
+export const FALLBACK_STORY_PHASES: GameStoryPhase[] = [
+  {
+    id: "20000000-0000-4000-8000-000000000001",
+    phase_number: 0,
+    code: "PHASE_00_DYSON9_PROLOGUE",
+    title: "The Fall of Dyson-9: Vault Extraction",
+    cinematic_id: "C00_PROLOGUE_DYSON9",
+    setting: "Collapsing Inner Dyson-9 Star-Core Vault (Z = +450m)",
+    lore_synopsis:
+      "At 04:12 Galactic Cycle, Dyson-9's containment magnetic lattice fractures. Operative Kaelen executes an unauthorized zero-g breach into the Inner Vault to recover the Genesis Seed before total stellar collapse. Surrounded by catastrophic plasma venting and automated security sentinels, Kaelen seals the Seed in an armored chest rig and ejects into the upper atmosphere canyon.",
+    level_mechanics: [
+      "Zero-G Magnetic Clambering",
+      "Micro-Burst Thruster Jumps",
+      "Plasma Vent Hazards",
+      "Sealed Chest Seed Carrying",
+    ],
+    operative_variant: "PKR_Kaelen_V1_SeedChest_RifleBack (86 bones, 4.2kg Seed canister)",
+    soundtrack_tempo: "142 BPM Industrial Breakbeat & Dissonant Sub-Bass Horns",
+    cinematic_camera_prompt:
+      "Cinematic FPP dolly shot tracking Operative Kaelen sprinting across buckling carbon walkways. Anamorphic lens flare from the unstable cyan star core behind. Debris and shattered solar lattice plates tumbling through volumetric steam. Low-angle snap zoom onto the glowing amber Genesis Seed canister locked across Kaelen's armored chest.",
+  },
+  {
+    id: "20000000-0000-4000-8000-000000000002",
+    phase_number: 1,
+    code: "PHASE_01_CERBERUS_MEGACITY",
+    title: "Cerberus Megacity: 54.89 km Kinetic Canyon Descent",
+    cinematic_id: "C01_CERBERUS_SECTOR_RUN",
+    setting: "Cerberus Megacity Brutalist Neon Canyon (Sectors S00-S59, 54.89 km track)",
+    lore_synopsis:
+      "Plummeting into Cerberus Megacity, Kaelen must traverse 60 contiguous brutalist sectors under torrential acid rain. The corporate autocracy has dispatched Hunter-Killer seeker drones and orbital rail snipers. Operative Kaelen threads a 32-meter KDTree-cleared parkour corridor across monolithic skyscraper facades, transit tubes, and illuminated billboards, maintaining perpetual forward momentum.",
+    level_mechanics: [
+      "Wall-Run Latch & 8.5m Eject",
+      "Slide-Under Laser Barriers",
+      "KDTree 32m Corridor Clearing",
+      "6-Fixture Light Pooling",
+      "Camera-Local Rain Suppression",
+    ],
+    operative_variant: "PKR_Kaelen_V2_RainSlick_NeonExo (86 bones, reactive rain shaders)",
+    soundtrack_tempo: "174 BPM Dark Cyberpunk Drum & Bass / Neurofunk Synthesizers",
+    cinematic_camera_prompt:
+      "Ultra-wide 24mm tracking camera rushing at 72 km/h parallel to Kaelen wall-running along a vertical cyan-lit billboard. Volumetric rain particles streak across the lens with GPU wipe distortion. Hunter-killer drone searchlights violently sweep across brutalist concrete canyons below, revealing distant glowing monolithic towers.",
+  },
+  {
+    id: "20000000-0000-4000-8000-000000000003",
+    phase_number: 2,
+    code: "PHASE_02_SUBSPACE_SINGULARITY",
+    title: "The Subspace Singularity: Sector 60 Terminal Vortex Dive",
+    cinematic_id: "C02_WARP_DIVE",
+    setting: "Subspace Conduit Pit beneath Sector 60 (Z = -1032m)",
+    lore_synopsis:
+      "At the terminal edge of Cerberus Sector 59, the ground gives way into a 1,000-meter vertical chasm—the Subspace Singularity conduit. With pursuit gunships closing in, Kaelen performs an unassisted terminal dive into the gravitational vortex, dodging high-voltage conduction coils and anti-gravity debris to breach the hyper-dimensional warp horizon.",
+    level_mechanics: [
+      "Terminal Freefall Aerodynamics",
+      "Conduction Coil Slalom",
+      "Singularity Gravitational Pull",
+      "EMP Shockwave Evasion",
+    ],
+    operative_variant: "PKR_Kaelen_V3_TerminalDive_AeroWing (86 bones, deployed air brakes)",
+    soundtrack_tempo: "160 BPM Cinematic Glitch-Hop & Shephard Tone Rising Accelerando",
+    cinematic_camera_prompt:
+      "First-person extreme dive view looking straight down into an infinite swirling cobalt-blue gravitational singularity at -1032m. Kaelen's gloved hands adjust aero-stabilizer fins as monolithic metal rings whirl past at supersonic speed. Lightning arcs illuminate the sheer chasm walls while the Genesis Seed pulses in sympathetic resonance.",
+  },
+  {
+    id: "20000000-0000-4000-8000-000000000004",
+    phase_number: 3,
+    code: "PHASE_03_HELIOS_IGNITION",
+    title: "Helios Ignition: Sun Summit Photosphere Labyrinth",
+    cinematic_id: "C03_SUN_SUMMIT_ASCENT",
+    setting: "Helios Orbital Sun-Harvester Array (Photosphere Climb Y = 55m to 118m, R = 155m)",
+    lore_synopsis:
+      "Emerging on the upper super-structure of the Helios Array directly above the blinding stellar photosphere, Kaelen ascends through five modular tiers. With magnetic solar sails rotating at high angular velocity and thermal purge louvers venting superheated ionized gas out of phase, Kaelen must ride rotary transit shuttles and scale magnetic struts to reach the Star Ignition Antenna.",
+    level_mechanics: [
+      "AnimatableBody3D Kinematic Carry",
+      "Rotating Solar Sail Balance",
+      "Out-of-Phase Thermal Purge Louvers",
+      "Rotary Transit Shuttle Rides",
+    ],
+    operative_variant: "PKR_Kaelen_V4_ThermalShield_GoldVisor (86 bones, solar gold polarization)",
+    soundtrack_tempo: "150 BPM Orchestral Hybrid Cyber-Trap & Choral Stabs",
+    cinematic_camera_prompt:
+      "Dramatic vertical crane shot ascending with Kaelen leaping from a spinning solar sail onto an AnimatableBody3D rotary shuttle platform. Massive blinding solar flares erupt in the photorealistic background, silhouetting the labyrinthine struts of the Helios superstructure against blinding gold corona heat.",
+  },
+  {
+    id: "20000000-0000-4000-8000-000000000005",
+    phase_number: 4,
+    code: "PHASE_06_APEX_REBIRTH",
+    title: "Apex Ignition: Star Rebirth & Dyson Restoration",
+    cinematic_id: "C06_STAR_REBIRTH_FINALE",
+    setting: "The Apex Transmitter Mod_Antenna_Apex (Helios Peak Y = +142m)",
+    lore_synopsis:
+      "Reaching the pinnacle spire of the Helios array with zero seconds remaining before star collapse, Kaelen slots the Genesis Seed into the Mod_Antenna_Apex transmitter cradle. The ancient containment protocols ignite: a shockwave of crystalline solar plasma bursts through the Dyson lattice, restoring the star to equilibrium and turning Cerberus Megacity's dark towers into beacons of perpetual energy.",
+    level_mechanics: [
+      "Timed Transmitter Docking",
+      "Shockwave Vector Riding",
+      "Zero-Latency Input Climax",
+      "Cinematic Victory Sequence",
+    ],
+    operative_variant: "PKR_Kaelen_V5_GenesisApex_Awakened (86 bones, iridescent stellar energy emissive)",
+    soundtrack_tempo: "138 BPM Triumphant Synthwave & Cyberpunk Orchestral Crescendo",
+    cinematic_camera_prompt:
+      "Low-angle heroic 35mm pan circling Kaelen as the Genesis Seed locks into the Apex transmitter. A blinding wave of golden-cyan energy radiates outwards in 360 degrees, shattering the dark smog of Cerberus Megacity and illuminating the entire planetary curve in transcendent stellar dawn.",
+  },
+];
+
+export async function fetchStoryPhases(): Promise<GameStoryPhase[]> {
+  try {
+    const res = await fetch(`${API_BASE}/story/phases`, { cache: "no-store" });
+    if (!res.ok) return FALLBACK_STORY_PHASES;
+    const data = (await res.json()) as GameStoryPhase[];
+    return Array.isArray(data) && data.length > 0 ? data : FALLBACK_STORY_PHASES;
+  } catch {
+    return FALLBACK_STORY_PHASES;
   }
 }
 

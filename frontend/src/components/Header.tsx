@@ -27,10 +27,11 @@ export function Header({
   onOpenCheckout,
 }: HeaderProps) {
   const navItems = [
-    { id: "hero", label: "3D Corridor Telemetry", icon: Boxes },
+    { id: "hero", label: "3D Telemetry", icon: Boxes },
+    { id: "story", label: "Story Arc", icon: Sparkles },
     { id: "vault", label: "Boilerplate Vault", icon: Code2 },
     { id: "pipeline", label: "CI/CD Runner", icon: Terminal },
-    { id: "curriculum", label: "6-Module Masterclass", icon: GraduationCap },
+    { id: "curriculum", label: "Masterclass", icon: GraduationCap },
   ];
 
   return (

@@ -5,6 +5,7 @@ import type {
   BoilerplateArtifactResponse,
   CurriculumModuleResponse,
   EnrollmentAndLicense,
+  GameStoryPhase,
   LicenseCheckoutResponse,
   PipelineRunResponse,
   PlatformMetricsResponse,
@@ -16,15 +17,18 @@ import {
   FALLBACK_ENROLLMENTS,
   FALLBACK_METRICS,
   FALLBACK_PIPELINE_RUNS,
+  FALLBACK_STORY_PHASES,
   fetchBoilerplateArtifacts,
   fetchCurriculumModules,
   fetchEnrollments,
   fetchPipelineRuns,
   fetchPlatformMetrics,
+  fetchStoryPhases,
 } from "@/lib/api";
 import { Header } from "@/components/Header";
 import { RevenueFunnelBar } from "@/components/RevenueFunnelBar";
 import { HeroCorridorVisualizer } from "@/components/HeroCorridorVisualizer";
+import { StoryPhasesViewer } from "@/components/StoryPhasesViewer";
 import { BoilerplateVaultInspector } from "@/components/BoilerplateVaultInspector";
 import { PipelineRunnerConsole } from "@/components/PipelineRunnerConsole";
 import { MasterclassCurriculumGrid } from "@/components/MasterclassCurriculumGrid";
@@ -40,6 +44,8 @@ export default function MomentumForgePage() {
   );
   const [modules, setModules] =
     useState<CurriculumModuleResponse[]>(FALLBACK_CURRICULUM);
+  const [storyPhases, setStoryPhases] =
+    useState<GameStoryPhase[]>(FALLBACK_STORY_PHASES);
   const [enrollments, setEnrollments] =
     useState<EnrollmentAndLicense[]>(FALLBACK_ENROLLMENTS);
 
@@ -53,11 +59,12 @@ export default function MomentumForgePage() {
   useEffect(() => {
     let mounted = true;
     async function loadInitialTelemetry() {
-      const [m, a, r, c, e] = await Promise.all([
+      const [m, a, r, c, s, e] = await Promise.all([
         fetchPlatformMetrics(),
         fetchBoilerplateArtifacts(),
         fetchPipelineRuns(),
         fetchCurriculumModules(),
+        fetchStoryPhases(),
         fetchEnrollments(),
       ]);
       if (!mounted) return;
@@ -65,6 +72,7 @@ export default function MomentumForgePage() {
       setArtifacts(a);
       setRuns(r);
       setModules(c);
+      setStoryPhases(s);
       setEnrollments(e);
     }
     loadInitialTelemetry();
@@ -169,6 +177,12 @@ export default function MomentumForgePage() {
             setSelectedVaultFilename("99_validate_scene.py");
             scrollToSection("vault");
           }}
+        />
+
+        {/* AAA Cinematic Narrative Arc & 5 Story Phases Viewer */}
+        <StoryPhasesViewer
+          storyPhases={storyPhases}
+          onInspectModuleTemplate={handleInspectTemplateFromCurriculum}
         />
 
         {/* Interactive Split-Pane Boilerplate Vault Code Explorer */}

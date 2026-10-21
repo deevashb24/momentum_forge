@@ -20,6 +20,7 @@ from models.schemas import (
     ArtifactCategoryEnum,
     BoilerplateArtifactResponse,
     CurriculumModuleResponse,
+    GameStoryPhaseResponse,
     LicenseCheckoutRequest,
     LicenseCheckoutResponse,
     PipelineRunCreateRequest,
@@ -133,6 +134,16 @@ def get_metrics() -> PlatformMetricsResponse:
 )
 def list_curriculum_modules() -> List[CurriculumModuleResponse]:
     return store.get_curriculum()
+
+
+@app.get(
+    "/api/v1/story/phases",
+    response_model=List[GameStoryPhaseResponse],
+    tags=["Cinematic Game Story"],
+    summary="List all narrative arc phases, cinematic camera prompts, and level mechanics",
+)
+def list_story_phases() -> List[GameStoryPhaseResponse]:
+    return store.get_story_phases()
 
 
 @app.get(

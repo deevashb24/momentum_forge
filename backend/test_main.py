@@ -31,6 +31,7 @@ def reset_store_state() -> None:
     store._tier_units_sold = dict(fresh._tier_units_sold)
     store.curriculum = list(fresh.curriculum)
     store.artifacts = list(fresh.artifacts)
+    store.story_phases = list(fresh.story_phases)
     store.pipeline_runs = list(fresh.pipeline_runs)
     store.licenses = list(fresh.licenses)
 
@@ -443,4 +444,30 @@ def test_create_pipeline_run_rejects_out_of_bounds_corridor_clearance() -> None:
         },
     )
     assert res.status_code == 422
+
+
+def test_list_story_phases_returns_all_narrative_arcs() -> None:
+    res = client.get("/api/v1/story/phases")
+    assert res.status_code == 200
+    phases = res.json()
+    assert len(phases) == 5
+    # Verify phases order (0 to 4)
+    phase_numbers = [p["phase_number"] for p in phases]
+    assert phase_numbers == [0, 1, 2, 3, 4]
+
+    codes = [p["code"] for p in phases]
+    assert "PHASE_00_DYSON9_PROLOGUE" in codes
+    assert "PHASE_01_CERBERUS_MEGACITY" in codes
+    assert "PHASE_02_SUBSPACE_SINGULARITY" in codes
+    assert "PHASE_03_HELIOS_IGNITION" in codes
+    assert "PHASE_06_APEX_REBIRTH" in codes
+
+    # Inspect Cerberus Megacity details
+    c01 = next(p for p in phases if p["phase_number"] == 1)
+    assert c01["cinematic_id"] == "C01_CERBERUS_SECTOR_RUN"
+    assert "54.89 km" in c01["setting"]
+    assert "KDTree 32m Corridor Clearing" in c01["level_mechanics"]
+    assert "86 bones" in c01["operative_variant"]
+    assert len(c01["cinematic_camera_prompt"]) > 20
+
 

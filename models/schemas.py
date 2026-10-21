@@ -127,6 +127,22 @@ class BoilerplateArtifactResponse(BaseModel):
     created_at: datetime
 
 
+class GameStoryPhaseResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    phase_number: int = Field(..., ge=0, le=10)
+    code: str = Field(..., min_length=3, max_length=64)
+    title: str = Field(..., min_length=3, max_length=160)
+    cinematic_id: str = Field(..., min_length=2, max_length=64)
+    setting: str = Field(..., min_length=3, max_length=200)
+    lore_synopsis: str = Field(..., min_length=10, max_length=1500)
+    level_mechanics: List[str] = Field(..., min_length=1, max_length=10)
+    operative_variant: str = Field(..., min_length=3, max_length=120)
+    soundtrack_tempo: str = Field(..., min_length=3, max_length=120)
+    cinematic_camera_prompt: str = Field(..., min_length=10, max_length=2000)
+
+
 # ============================================================================
 # 4. Blender-to-Godot CI/CD Pipeline Models
 # ============================================================================
